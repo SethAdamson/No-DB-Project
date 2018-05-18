@@ -1,0 +1,15 @@
+.AppParent {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(35, 35, 35);
+}
+
+.AppContent {
+  width: 1000px;
+  margin: 0 auto;
+  min-height: calc( 100vh - 50px );
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
