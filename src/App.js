@@ -14,7 +14,8 @@ class App extends Component {
       rockets: [],
       dubs: [],
       cavs: [],
-      celts: []
+      celts: [],
+      seriesList: []
     }
   }
 
@@ -69,8 +70,8 @@ class App extends Component {
     return (
       <div className="AppParent">
         <Header />
-        <Series rockets={rockets} dubs={dubs} cavs={cavs} celts={celts} />
-        <Results />
+        <Series  />
+        <Results rockets={rockets} dubs={dubs} cavs={cavs} celts={celts} />
       </div>
     );
   }
