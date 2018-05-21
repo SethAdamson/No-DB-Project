@@ -6,7 +6,7 @@ export default class Header extends Component {
         return (
             <section className="HeaderParent">
                 <section className="HeaderContent">
-                    <span>NBA Playoffs 2018</span>
+                    <span className='title'>NBA Playoffs 2018</span>
                     <span id="sub">Perfect Predictions</span>
                     {/* <img src="./trophy.jpg" alt="Trophy" /> */}
                     {/* <hr /> */}

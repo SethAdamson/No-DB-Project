@@ -15,7 +15,7 @@
     align-items: center;
 }
 
-span {
+.title {
     font-size: 10vh;
     font-family: 'Racing Sans One', cursive;
     color: #002E62;

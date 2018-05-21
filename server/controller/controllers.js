@@ -3,7 +3,7 @@ const config = require('../config');
 
 let stats = [];
 let results = [];
-let id = [];
+let id = 0;
 let photo = '';
 let URL = "https://api.mysportsfeeds.com/v1.2/pull/nba/2018-playoff/playoff_team_standings.json?team=bos,cle,hou,gsw";
 
@@ -24,8 +24,8 @@ module.exports = {
 
         createRes: (req, res) => {
             console.log("Add");
-            let {gameName, series, winner} = req.results;
-            results.push({id, gameName, series, winner});
+            let {seriesName, teamSelection, winner} = req.body;
+            results.push({id, seriesName, teamSelection, winner});
             id++;
             res.status(200).send(results);
         },

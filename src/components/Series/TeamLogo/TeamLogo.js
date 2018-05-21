@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './TeamLogo.css';
-import './Boston.png';
-import './Cavs.png';
-import './Finals.png';
-import './GSW.png';
-import './Hou.png';
+import '../images/Boston.png';
+import '../images/Cavs.png';
+import '../images/Finals.png';
+import '../images/GSW.png';
+import '../images/Hou.png';
 
 export default class TeamLogo extends Component {
 
@@ -12,20 +12,20 @@ showTeam(val){
     if(val==="east"){
         return (
             <div className='teams'> 
-                <img className='logo' src={require("./Boston.png")} alt="BOS" />
+                <img className='logo' src={require("../images/Boston.png")} alt="BOS" />
                 <h1>VS</h1>
-                <img className='logo' src={require("./Cavs.png")} alt="CLE" />
+                <img className='logo' src={require("../images/Cavs.png")} alt="CLE" />
             </div>)
     } else if (val==="west"){
         return (
             <div className='teams'>
-                <img className='logo' src={require("./GSW.png")} alt="GSW" />
+                <img className='logo' src={require("../images/GSW.png")} alt="GSW" />
                 <h1>VS</h1>
-                <img className='hou' src={require("./Hou.png")} alt="HOU" />
+                <img className='hou' src={require("../images/Hou.png")} alt="HOU" />
             </div>)
     } else {
         return(
-        <img className='finals' src={require("./Finals.png")} alt="Finals" />)
+        <img className='finals' src={require("../images/Finals.png")} alt="Finals" />)
     }
 }
     

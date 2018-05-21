@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Series.css'
 import TeamLogo from './TeamLogo/TeamLogo'
 import Results from './Results/Results'
+import axios from 'axios';
 
 export default class Series extends Component {
     constructor(){
@@ -10,8 +11,12 @@ export default class Series extends Component {
         this.state = {
             seriesName: '',
             teamSelection: '',
-            winner: ''
+            winner: '',
+            seriesList: []
         }
+
+        this.findWinner = this.findWinner.bind(this);
+        this.clearResults = this.clearResults.bind(this);
     }
 
 updateVal(val) {
@@ -20,22 +25,96 @@ updateVal(val) {
     })
 }
 
-selectGame(val) {
+selectGame(val, cb) {
     this.setState({
         teamSelection: val
+    });
+    cb(val);
+}
+
+clearResults () {
+    this.setState({
+        seriesList: []
     })
 }
 
-createSeries(teams) {
-    
+
+findWinner(val) {
+    if(val==='east') {
+        if((this.props.celts + this.props.randomFn(-15, 15)) > (this.props.cavs + this.props.randomFn(-15, 15))) {
+            this.setState({
+                winner: 'Celtics'
+            })
+        } else {
+            this.setState({
+                winner: 'Cavs'
+            })
+        } 
+    } else if(val==='west'){
+        if((this.props.dubs + this.props.randomFn(-15, 15)) > (this.props.rockets + this.props.randomFn(-15, 15))) {
+            this.setState({
+                    winner: 'Warriors'
+            })
+        } else {
+            this.setState({
+                    winner: 'Rockets'
+            })
+        }
+    } else if(val==='finals') {
+        if((this.props.dubs + this.props.randomFn(-15, 15)) > 
+            (this.props.rockets + this.props.randomFn(-15, 15)) &&
+            (this.props.celts + this.props.randomFn(-15, 15)) &&
+            (this.props.cavs + this.props.randomFn(-15, 15))) {
+                this.setState({
+                    winner: 'Warriors'
+            })
+            } else if ((this.props.rockets + this.props.randomFn(-15, 15)) > 
+            (this.props.dubs + this.props.randomFn(-15, 15)) &&
+            (this.props.celts + this.props.randomFn(-15, 15)) &&
+            (this.props.cavs + this.props.randomFn(-15, 15))) {
+                this.setState({
+                    winner: 'Rockets'
+            })
+            } else if ((this.props.celts + this.props.randomFn(-15, 15)) > 
+            (this.props.dubs + this.props.randomFn(-15, 15)) &&
+            (this.props.rockets + this.props.randomFn(-15, 15)) &&
+            (this.props.cavs + this.props.randomFn(-15, 15))) {
+                this.setState({
+                    winner: 'Celtics'
+            })
+            } else if ((this.props.cavs + this.props.randomFn(-15, 15)) > 
+            (this.props.dubs + this.props.randomFn(-15, 15)) &&
+            (this.props.rockets + this.props.randomFn(-15, 15)) &&
+            (this.props.celts + this.props.randomFn(-15, 15))) {
+                this.setState({
+                    winner: 'Cavs'
+            })
+        }
+    }
+}
+
+createSeries() {
+    let {seriesName, teamSelection, winner} = this.state;
+    if(seriesName) {
+        axios.post('/api/nba/results', {seriesName, teamSelection, winner}).then(res => {
+            console.log(res.data)
+            this.setState({seriesList: res.data})
+        });
+        this.setState({
+            seriesName: '',
+            teamSelection: '',
+            winner: ''
+        })
+    }
 }
 
     render() {
-        let {seriesName, teamSelection, winner} = this.state
+        let {seriesName, teamSelection, winner, seriesList} = this.state
         let {rockets,dubs,cavs,celts} = this.props
         console.log(seriesName);
         console.log(teamSelection);
         console.log(winner);
+        // console.log(seriesList);
         return (
             <section className="SeriesParent">
                 <section className="SeriesContent">
@@ -43,7 +122,7 @@ createSeries(teams) {
                             placeholder="Playoff Series Name"
                             onChange={(e) => this.updateVal(e.target.value)}/>
                     <select className='seriesSelection'
-                            onChange={(e) => this.selectGame(e.target.value)}
+                            onChange={(e) => this.selectGame(e.target.value, this.findWinner)}
                             value=''>
                         <option id='select' value='' disabled hidden>--Pick your Game--</option>
                         <option value='west'>Golden State vs. Houston</option>
@@ -51,7 +130,7 @@ createSeries(teams) {
                         <option value='finals'>NBA Finals</option>
                     </select> 
                     <button className='seriesSubmit'
-                            onClick={() => this.createSeries(teamSelection)} >Let's Go!</button>
+                            onClick={() => this.createSeries()} >Let's Go!</button>
                 </section>
                 <TeamLogo teamSelection={teamSelection} />
                 <hr />
@@ -59,9 +138,8 @@ createSeries(teams) {
                         dubs={dubs}
                         cavs={cavs} 
                         celts={celts} 
-                        seriesName={seriesName}
-                        teamSelection={teamSelection}
-                        winner={winner} />
+                        seriesList={seriesList}
+                        clearResults={this.clearResults} />
             </section>
         )
     }

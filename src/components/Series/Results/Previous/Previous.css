@@ -1,0 +1,15 @@
+.PreviousParent {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(255, 0, 0);
+    box-sizing: border-box;
+}
+
+.PreviousContent {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 { 
+    font-size: 12px;
+}

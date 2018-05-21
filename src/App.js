@@ -9,11 +9,10 @@ class App extends Component {
     super();
 
     this.state = {
-      teams: [],
-      rockets: [],
-      dubs: [],
-      cavs: [],
-      celts: []
+      rockets: 0,
+      dubs: 0,
+      cavs: 0,
+      celts: 0
     }
   }
 
@@ -24,12 +23,15 @@ class App extends Component {
     //   console.log(res);
     //   })
 
-    axios.get("/api/nba").then(res => {
-      console.log(res);
-      this.setState({
-        teams: res.data
-      })
-    })
+    // axios.get("/api/nba").then(res => {
+    //   console.log(res.data);
+    //   this.setState({
+    //     celts: +res.data[0].teamentry[0].stats.PtsPerGame['#text'],
+    //     cavs: +res.data[0].teamentry[1].stats.PtsPerGame['#text'],
+    //     dubs: +res.data[1].teamentry[0].stats.PtsPerGame['#text'],
+    //     rockets: +res.data[1].teamentry[1].stats.PtsPerGame['#text']
+    //   })
+    // })
 
     // axios.get("https://nba-players.herokuapp.com/players-stats-teams/cle").then( res => {
     //   this.setState({
@@ -60,19 +62,9 @@ random (from, to) {
   return Math.floor(Math.random() * (to - from) + from);
 }
 
-teamSort (arr) {
-    this.setState({
-      celts: arr[0].teamentry[0],
-      cavs: arr[0].teamentry[1],
-      rockets: arr[1].teamentry[0],
-      dubs: arr[1].teamentry[1]
-    })
-  }
-
   render() {
-    let {rockets, dubs, cavs, celts, teams} = this.state;
-    // this.teamSort(teams);
-    console.log(teams[0][teamentry]);
+    let {rockets, dubs, cavs, celts} = this.state;
+    console.log(this.state);
     return (
       <div className="AppParent">
         <Header />
