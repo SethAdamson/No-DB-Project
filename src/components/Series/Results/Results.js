@@ -41,7 +41,7 @@ export default class Results extends Component {
     }
 
     render() {
-        let {seriesList, clearResults} =this.props
+        let {seriesList, clearResults, removeGame, editMessage} =this.props
         return (
             <section className="ResultsParent">
                 <section className="ResultsContent">
@@ -59,7 +59,9 @@ export default class Results extends Component {
                                     key={elem.id}
                                     seriesName={elem.seriesName}
                                     teamSelection={elem.teamSelection}
-                                    winner={elem.winner}/>
+                                    winner={elem.winner}
+                                    removeGame={removeGame}
+                                    editMessage={editMessage}/>
                     ))}
                     </div> 
             </section>

@@ -9,14 +9,14 @@ import '../images/Hou.png';
 export default class TeamLogo extends Component {
 
 showTeam(val){
-    if(val==="east"){
+    if(val==="East"){
         return (
             <div className='teams'> 
                 <img className='logo' src={require("../images/Boston.png")} alt="BOS" />
                 <h1>VS</h1>
                 <img className='logo' src={require("../images/Cavs.png")} alt="CLE" />
             </div>)
-    } else if (val==="west"){
+    } else if (val==="West"){
         return (
             <div className='teams'>
                 <img className='logo' src={require("../images/GSW.png")} alt="GSW" />

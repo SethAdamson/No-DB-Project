@@ -32,11 +32,11 @@ module.exports = {
 
         updateRes: (req, res) => {
             console.log("Update");
-            let {gameName} = req.results;
-            let updateID = req.results.id
+            let {seriesName} = req.body;
+            let updateID = +req.params.id
             for( let i=0; i < results.length; i++) {
                 if(results[i].id === updateID) {
-                    results[i].gameName = gameName;
+                    results[i].seriesName = seriesName;
                     return res.status(200).send(results);
                 }
             }
@@ -44,11 +44,11 @@ module.exports = {
 
         deleteRes: (req, res) => {
             console.log("Delete");
-            let deleteID = req.results.id;
+            let deleteID = +req.params.id;
             for(let i=0; i<results.length; i++) {
                 if(results[i].id === deleteID) {
                     results.splice(i, 1);
-                    return res.status(200).send(results)
+                    return res.status(200).send(results);
                 }
             }
         },

@@ -2,8 +2,33 @@ import React, {Component} from 'react';
 import './Previous.css';
 
 export default class Previous extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            editting: false,
+            seriesName: props.seriesName
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.edit = this.edit.bind(this);
+    }
+    
+    handleChange(e) {
+        this.setState({ seriesName: e.target.value });
+    }
+    
+    edit(e) {
+        let { seriesName } = this.state;
+        let { id, editMessage } = this.props;
+            if( e.key === "Enter" && seriesName.length !== 0 ) {
+                editMessage( id, seriesName );
+                this.setState({ editting: false });
+        }
+    }
+
     render() {
-        let {id, seriesName, teamSelection, winner} = this.props;
+        let {editting} = this.state;
+        let {id, seriesName, teamSelection, winner, removeGame} = this.props;
         return (
             <section className="PreviousParent">
                 <section className="PreviousContent">
@@ -14,8 +39,18 @@ export default class Previous extends Component {
                     <h2 className="winner"
                     >Winner: {winner}</h2>
                     <h2 className='adjust'>
-                        <button className='edit'>Edit</button>
-                        <button className='delete'>Delete</button>
+                        {
+                            editting
+                            ?
+                            <input className='editInput'value={ this.state.seriesName} onChange={ this.handleChange } onKeyPress={ this.edit }/>
+                            :
+                            <button className='edit'
+                                onClick={() => this.setState({editting: !this.state.editting, seriesName})}>Edit</button>
+                        }
+                        {/* <button className='edit'
+                                onClick={() => this.setState({editting: !this.state.editting, seriesName})}>Edit</button> */}
+                        <button className='delete'
+                                onClick={() => removeGame(id)}>Delete</button>
                     </h2>
                     
                 </section>
