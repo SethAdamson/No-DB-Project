@@ -45,7 +45,7 @@ export default class Results extends Component {
         return (
             <section className="ResultsParent">
                 <section className="ResultsContent">
-                    <h1>Results</h1>
+                    <h1 id="results">Results</h1>
                     <button className='clear'
                     onClick={() => clearResults()}>Clear Results</button>
                     {this.displayWinner(seriesList)}

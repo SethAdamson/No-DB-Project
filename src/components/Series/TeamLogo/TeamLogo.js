@@ -13,7 +13,7 @@ showTeam(val){
         return (
             <div className='teams'> 
                 <img className='logo' src={require("../images/Boston.png")} alt="BOS" />
-                <h1>VS</h1>
+                <h1 id='vs'>VS</h1>
                 <img className='logo' src={require("../images/Cavs.png")} alt="CLE" />
             </div>)
     } else if (val==="West"){

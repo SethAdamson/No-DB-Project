@@ -11,7 +11,7 @@ app.get('/api/nba/results', ctrl.getRes);
 app.post('/api/nba/results', ctrl.createRes);
 app.put('/api/nba/results/:id', ctrl.updateRes);
 app.delete('/api/nba/results/:id', ctrl.deleteRes);
-app.get('/api/nba/:photo', ctrl.getPlayerPhoto)
+app.get('/api/nba/:photo', ctrl.getPlayerPhoto);
 
 app.listen(PORT, () => {
     console.log('Listening on port: ' + PORT)

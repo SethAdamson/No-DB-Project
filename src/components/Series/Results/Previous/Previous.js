@@ -33,27 +33,28 @@ export default class Previous extends Component {
             <section className="PreviousParent">
                 <section className="PreviousContent">
                     <h2 className="name"
-                    >Name: {seriesName}</h2>
+                    >Name: <h3>{seriesName}</h3></h2>
                     <h2 className="series"
-                    >Series: {teamSelection}</h2>
+                    >Series: <h3>{teamSelection}</h3></h2>
                     <h2 className="winner"
-                    >Winner: {winner}</h2>
+                    >Winner: <h3>{winner}</h3> </h2>
+                </section>
                     <h2 className='adjust'>
                         {
                             editting
                             ?
                             <input className='editInput'value={ this.state.seriesName} onChange={ this.handleChange } onKeyPress={ this.edit }/>
                             :
-                            <button className='edit'
-                                onClick={() => this.setState({editting: !this.state.editting, seriesName})}>Edit</button>
+                            // <button className='edit'
+                            //     onClick={() => this.setState({editting: !this.state.editting, seriesName})}>Edit</button>
+                            <p>
+                                <button className='edit'
+                                        onClick={() => this.setState({editting: !this.state.editting, seriesName})}>Edit</button>
+                                <button className='delete'
+                                        onClick={() => removeGame(id)}>Delete</button>
+                            </p>
                         }
-                        {/* <button className='edit'
-                                onClick={() => this.setState({editting: !this.state.editting, seriesName})}>Edit</button> */}
-                        <button className='delete'
-                                onClick={() => removeGame(id)}>Delete</button>
                     </h2>
-                    
-                </section>
             </section>
         )
     }

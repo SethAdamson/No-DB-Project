@@ -1,7 +1,9 @@
 .SeriesParent {
     width: 100%;
     height: 75vh;
-    background-color: lightgrey;
+    background: #606c88;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #45474d, #7d818a);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4b4f58, #797f8b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 10px 0px 20px 0px;
     box-sizing: border-box;
 }
@@ -41,9 +43,12 @@
 }
 
 select {
-    color: rgba(0, 0, 0, 0.253);
+    color: rgba(0, 0, 0, 0.5);
 }
 
-hr{
-    margin: 20px 0;
+hr {
+    margin: 15px;
+    border: 0;
+    height: 1px;
+    background: rgb(165, 165, 165);
 }

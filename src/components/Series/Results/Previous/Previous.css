@@ -1,15 +1,35 @@
 .PreviousParent {
-    height: 100px;
-    width: 100px;
-    background-color: rgb(255, 0, 0);
+    height: 180px;
+    width: 150px;
+    background-color: rgba(255, 255, 255, 0.459);
     box-sizing: border-box;
+    overflow: hidden;
+    margin: 10px 0 0 0;
+    border: 2px solid black
 }
 
 .PreviousContent {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    flex-flow: column-reverse;
 }
 
 h2 { 
-    font-size: 12px;
+    margin: 5px 0 0 0;
+    font-size: 18px;
+    text-align: center;
+    color: #002E62;
+}
+
+h3 { 
+    margin: 0;
+    font-size: 16px;
+    color: #EE184C;
+}
+
+p {
+    display: flex;
+    flex-direction: row;
+    justify-content: center
 }

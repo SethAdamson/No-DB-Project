@@ -21,6 +21,10 @@ export default class Series extends Component {
         this.editMessage = this.editMessage.bind(this);
     }
 
+componentDidMount(){
+    axios.get(`/api/nba/results`).then(res => this.setState({seriesList: res.data}))
+}
+
 updateVal(val) {
     this.setState({
         seriesName: val
