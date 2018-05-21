@@ -1,0 +1,10 @@
+.ResultsParent {
+    height: 45vh;
+    width: 100%;
+    background-color: blue;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 0;
+}

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Series.css'
 import TeamLogo from './TeamLogo/TeamLogo'
+import Results from './Results/Results'
 
 export default class Series extends Component {
     constructor(){
@@ -9,6 +10,7 @@ export default class Series extends Component {
         this.state = {
             seriesName: '',
             teamSelection: '',
+            winner: ''
         }
     }
 
@@ -24,10 +26,16 @@ selectGame(val) {
     })
 }
 
+createSeries(teams) {
+    
+}
+
     render() {
-        let {seriesName, teamSelection} = this.state
+        let {seriesName, teamSelection, winner} = this.state
+        let {rockets,dubs,cavs,celts} = this.props
         console.log(seriesName);
         console.log(teamSelection);
+        console.log(winner);
         return (
             <section className="SeriesParent">
                 <section className="SeriesContent">
@@ -42,9 +50,18 @@ selectGame(val) {
                         <option value='east'>Cleveland vs. Boston</option>
                         <option value='finals'>NBA Finals</option>
                     </select> 
-                    <button className='seriesSubmit'>Let's Go!</button>
+                    <button className='seriesSubmit'
+                            onClick={() => this.createSeries(teamSelection)} >Let's Go!</button>
                 </section>
                 <TeamLogo teamSelection={teamSelection} />
+                <hr />
+                <Results rockets={rockets} 
+                        dubs={dubs}
+                        cavs={cavs} 
+                        celts={celts} 
+                        seriesName={seriesName}
+                        teamSelection={teamSelection}
+                        winner={winner} />
             </section>
         )
     }

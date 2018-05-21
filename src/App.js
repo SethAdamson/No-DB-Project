@@ -3,7 +3,6 @@ import axios from 'axios';
 import './App.css';
 import Header from './components/Header/Header'
 import Series from './components/Series/Series'
-import Results from './components/Results/Results'
 
 class App extends Component {
   constructor() {
@@ -14,8 +13,7 @@ class App extends Component {
       rockets: [],
       dubs: [],
       cavs: [],
-      celts: [],
-      seriesList: []
+      celts: []
     }
   }
 
@@ -26,12 +24,12 @@ class App extends Component {
     //   console.log(res);
     //   })
 
-    // axios.get("/api/nba").then(res => {
-    //   console.log(res);
-    //   this.setState({
-    //     teams: res.data
-    //   })
-    // })
+    axios.get("/api/nba").then(res => {
+      console.log(res);
+      this.setState({
+        teams: res.data
+      })
+    })
 
     // axios.get("https://nba-players.herokuapp.com/players-stats-teams/cle").then( res => {
     //   this.setState({
@@ -58,23 +56,31 @@ class App extends Component {
   //   })
   }
   
+random (from, to) {
+  return Math.floor(Math.random() * (to - from) + from);
+}
 
-
+teamSort (arr) {
+    this.setState({
+      celts: arr[0].teamentry[0],
+      cavs: arr[0].teamentry[1],
+      rockets: arr[1].teamentry[0],
+      dubs: arr[1].teamentry[1]
+    })
+  }
 
   render() {
     let {rockets, dubs, cavs, celts, teams} = this.state;
-    console.log(teams);
-    // for(let i=0; i<teams.length; i++) {
-    //   if(teams.)
-    // }
+    // this.teamSort(teams);
+    console.log(teams[0][teamentry]);
     return (
       <div className="AppParent">
         <Header />
-        <Series  />
-        <Results rockets={rockets} dubs={dubs} cavs={cavs} celts={celts} />
+        <Series rockets={rockets} dubs={dubs} cavs={cavs} celts={celts} randomFn={this.random} />
       </div>
     );
   }
 }
+
 
 export default App;

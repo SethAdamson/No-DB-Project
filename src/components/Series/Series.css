@@ -1,6 +1,6 @@
 .SeriesParent {
     width: 100%;
-    height: 25vh;
+    height: 75vh;
     background-color: lightgrey;
     padding: 10px 0px 20px 0px;
     box-sizing: border-box;
@@ -42,4 +42,8 @@
 
 select {
     color: rgba(0, 0, 0, 0.253);
+}
+
+hr{
+    margin: 20px 0;
 }
