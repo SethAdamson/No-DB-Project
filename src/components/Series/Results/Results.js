@@ -12,8 +12,20 @@ export default class Results extends Component {
     constructor() {
         super();
         this.state = {
-            
+            LBJ : '',
+            SC : '',
+            JT : '',
+            JH : ''
         }
+    }
+
+    componentDidMount(){
+        axios.get('https://nba-players.herokuapp.com/players/curry/stephen').then(res => {
+            console.log(res);
+            this.setState({
+                SC : res.data
+            })
+        })
     }
 
     displayWinner(val) {

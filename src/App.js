@@ -23,15 +23,15 @@ class App extends Component {
     //   console.log(res);
     //   })
 
-    axios.get("/api/nba").then(res => {
-      console.log(res.data);
-      this.setState({
-        celts: +res.data[0].teamentry[0].stats.PtsPerGame['#text'],
-        cavs: +res.data[0].teamentry[1].stats.PtsPerGame['#text'],
-        dubs: +res.data[1].teamentry[0].stats.PtsPerGame['#text'],
-        rockets: +res.data[1].teamentry[1].stats.PtsPerGame['#text']
-      })
-    })
+    // axios.get("/api/nba").then(res => {
+    //   console.log(res.data);
+    //   this.setState({
+    //     celts: +res.data[0].teamentry[0].stats.PtsPerGame['#text'],
+    //     cavs: +res.data[0].teamentry[1].stats.PtsPerGame['#text'],
+    //     dubs: +res.data[1].teamentry[0].stats.PtsPerGame['#text'],
+    //     rockets: +res.data[1].teamentry[1].stats.PtsPerGame['#text']
+    //   })
+    // })
 
     // axios.get("https://nba-players.herokuapp.com/players-stats-teams/cle").then( res => {
     //   this.setState({

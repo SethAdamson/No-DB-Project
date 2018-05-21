@@ -45,3 +45,8 @@ h1 {
     max-height: 250px;
     max-width: 250px;
 }
+
+.trophy {
+    max-height: 125px;
+    max-width: 125px;
+}

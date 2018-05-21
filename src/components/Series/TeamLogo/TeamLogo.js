@@ -5,6 +5,7 @@ import '../images/Cavs.png';
 import '../images/Finals.png';
 import '../images/GSW.png';
 import '../images/Hou.png';
+import '../images/trophy.png';
 
 export default class TeamLogo extends Component {
 
@@ -23,9 +24,12 @@ showTeam(val){
                 <h1>VS</h1>
                 <img className='hou' src={require("../images/Hou.png")} alt="HOU" />
             </div>)
-    } else {
+    } else if(val==="Finals") {
         return(
         <img className='finals' src={require("../images/Finals.png")} alt="Finals" />)
+    } else {
+        return(
+            <img className='trophy' src={require("../images/trophy.png")} alt="Trophy" />)
     }
 }
     
